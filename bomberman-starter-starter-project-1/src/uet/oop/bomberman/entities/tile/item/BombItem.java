@@ -16,8 +16,10 @@ public class BombItem extends Item{
 
 		if(e instanceof Bomber) {
 			((Bomber) e).addItem(this);
+			if(_active==false)
 			Game.addBombRate(1);
 			remove();
+			_active=true;
 			return true;
 		}
 

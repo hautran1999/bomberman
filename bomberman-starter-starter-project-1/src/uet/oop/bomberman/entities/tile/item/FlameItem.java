@@ -16,8 +16,10 @@ public class FlameItem extends Item {
 
 		if(e instanceof Bomber) {
 			((Bomber) e).addItem(this);
+			if(_active==false)
 			Game.addBombRadius(1);
 			remove();
+			_active=true;
 			return true;
 		}
 

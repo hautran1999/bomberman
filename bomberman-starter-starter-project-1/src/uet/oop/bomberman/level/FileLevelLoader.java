@@ -42,7 +42,8 @@ public class FileLevelLoader extends LevelLoader {
 		// TODO: đọc dữ liệu từ tệp cấu hình /levels/Level{level}.txt
 		// TODO: cập nhật các giá trị đọc được vào _width, _height, _level, _map
 		try{
-			FileReader fr = new FileReader("D:\\bomberman-starter-starter-project-1\\res\\levels\\Level1.txt");
+			String path = "D:\\bomberman-starter-starter-project-1\\res\\levels\\Level"+level+".txt";
+			FileReader fr = new FileReader(path);
 			BufferedReader in = new BufferedReader(fr);
 			String data = in.readLine();
 			StringTokenizer tokens = new StringTokenizer(data);
@@ -80,7 +81,7 @@ public class FileLevelLoader extends LevelLoader {
 				switch (_map[y][x]){
 					case '#' : _board.addEntity(pos, new LayeredEntity(x, y , new Grass(x, y, Sprite.grass),new Wall(x, y, Sprite.wall)));break;
 					case '*' : _board.addEntity(pos, new LayeredEntity(x, y , new Grass(x, y, Sprite.grass),new Brick(x, y, Sprite.brick)));break;
-					case 'x' : _board.addEntity(pos, new LayeredEntity(x, y , new Grass(x, y, Sprite.grass),new Portal(x, y, Sprite.portal),new Brick(x, y, Sprite.brick)));break;
+					case 'x' : _board.addEntity(pos, new LayeredEntity(x, y , new Grass(x, y, Sprite.grass),new Portal(x, y,_board, Sprite.portal),new Brick(x, y, Sprite.brick)));break;
 					case 'p' : _board.addCharacter( new Bomber(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board) );
 						Screen.setOffset(0, 0);
 						_board.addEntity(pos, new Grass(x, y, Sprite.grass)); break;

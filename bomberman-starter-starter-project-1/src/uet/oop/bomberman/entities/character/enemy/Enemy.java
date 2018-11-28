@@ -11,10 +11,10 @@ import uet.oop.bomberman.entities.bomb.FlameSegment;
 import uet.oop.bomberman.entities.character.Bomber;
 import uet.oop.bomberman.entities.character.Character;
 import uet.oop.bomberman.entities.character.enemy.ai.AI;
+import uet.oop.bomberman.entities.tile.Grass;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
 import uet.oop.bomberman.level.Coordinates;
-
 import java.awt.*;
 import java.io.IOException;
 
@@ -143,6 +143,10 @@ public abstract class Enemy extends Character {
 		if(e instanceof Bomber) {
 			((Bomber) e).kill();
 			return false;
+		}
+		if(e instanceof Enemy){
+
+
 		}
 
 		return true;
